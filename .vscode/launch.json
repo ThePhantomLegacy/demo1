@@ -12,6 +12,7 @@
             "program": "${workspaceFolder}\\start.js",
             "env":
             {
+                "PORT": "3000",
                 "FORGE_CLIENT_ID": "nUyGAi4WsP5H1Oh4UQuV3csJ1MTtzAnE",
                 "FORGE_CLIENT_SECRET": "BTg7MKVM1uIQpr73",
                 "FORGE_CALLBACK_URL": "http://localhost:3000/api/forge/callback/oauth"
