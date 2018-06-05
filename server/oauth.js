@@ -10,10 +10,12 @@ var config = require('./config');
 var _cached = [];
 
 module.exports = {
+    // Client-side
     getTokenPublic: function () {
         return this.OAuthRequest(config.scopePublic, 'public');
     },
 
+    // Server-side
     getTokenInternal: function () {
         return this.OAuthRequest(config.scopeInternal, 'internal');
     },
