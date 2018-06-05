@@ -1,4 +1,4 @@
-// Defins the environment variables and scopes
+// THis file defines the environment variables and scopes
 'use strict';
 
 // Autodesk Forge configuration
