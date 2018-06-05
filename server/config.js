@@ -2,8 +2,7 @@
 'use strict';
 
 // Autodesk Forge configuration
-module.exports = 
-{
+module.exports = {
     // Set environment variables or hard-code here
     credentials: 
     {
