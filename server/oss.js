@@ -68,6 +68,7 @@ router.post('/api/forge/oss/buckets', jsonParser, function (req, res) {
     oauth.getTokenInternal().then(function (credentials) {
         var bucketsApi = new forgeSDK.BucketsApi();
         var postBuckets = new forgeSDK.PostBucketsPayload();
+        // console.log(req.body.bucketKey);
         postBuckets.bucketKey = req.body.bucketKey;
         postBuckets.policyKey = "temporary"; // expires in 24h | transient: 24h Temporary: 30 days
 
@@ -81,6 +82,22 @@ router.post('/api/forge/oss/buckets', jsonParser, function (req, res) {
                 console.log(error);
                 res.status(500).json(error);
             }
+        });
+    });
+});
+
+// Delete a bucket
+router.delete('/api/forge/oss/buckets', jsonParser, function (req, res) {
+    oauth.getTokenInternal().then(function(credentials) {
+        var bucketsApi = new forgeSDK.BucketsApi();
+        var bucketKey = req.body.bucketKey;
+        // console.log(req.body.bucketKey);
+        bucketsApi.deleteBucket(bucketKey, oauth.OAuthClient(), credentials).then(function() {
+            res.status(200).end();
+        }).catch(function(error) {
+                console.log('Error at OSS Delete Bucket:');
+                console.log(error);
+                res.status(500).json(error);
         });
     });
 });

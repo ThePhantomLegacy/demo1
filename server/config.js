@@ -12,7 +12,7 @@ module.exports = {
     },
 
     // Required scopes for your application on server-side
-    scopeInternal: ['bucket:create', 'bucket:read', 'data:create', 'data:read', 'data:write'],
+    scopeInternal: ['bucket:create', 'bucket:read','bucket:delete', 'data:create', 'data:read', 'data:write'],
     // Required scope of the token sent to the client
     scopePublic: ['viewables:read']
 };

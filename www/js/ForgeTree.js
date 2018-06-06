@@ -100,6 +100,13 @@ $(document).ready(function () {
               uploadFile(treeNode);
             },
             icon: 'glyphicon glyphicon-cloud-upload'
+          },
+          deleteBucket: {
+            label: "Delete",
+            action: function() {
+              var treeNode = $('#appBuckets').jstree(true).get_selected(true)[0];
+              deleteBucket(treeNode);
+            }
           }
         };
         break;
@@ -146,6 +153,25 @@ $(document).ready(function () {
     });
   }
   
+  function deleteBucket(node) {
+    switch(node.type) {
+      case 'bucket':
+        // var bucketKey = node.id;
+        // console.log(node.id);
+        $.ajax({
+          url: '/api/forge/oss/buckets',
+          contentType: 'application/json',
+          data: JSON.stringify({'bucketKey': node.id}),
+          type: 'DELETE',
+          success: function(data) {
+            // $('#appBuckets').jstree(true).refresh_node(node);
+            $('#appBuckets').jstree(true).refresh();
+          }
+        });
+        break;
+    }
+  }
+
   function translateObject(node) {
     $("#forgeViewer").empty();
     if (node == null) node = $('#appBuckets').jstree(true).get_selected(true)[0];
